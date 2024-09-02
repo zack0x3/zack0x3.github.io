@@ -155,7 +155,7 @@ Well, we have already coded an xpl (exploit), I will explain each line
 In 1, all the functions/modules provided by the 'pwn' lib are being imported
 In 2, the process function is being used to execute the 'bof' binary
 In 3, a variable is being defined where we define A as a byte and repeat it, 72x which is the offset number.
-In 4, this is where the address that will be changed in the RIP will be located, where after the 'ret' occurs, it will be popped and used to know where to return, but in this case, since we are going to change it, it will change the normal flow of the program hihihi
+In 4 p64(), this is where the address that will be changed in the RIP will be located, where after the 'ret' occurs, it will be popped and used to know where to return, but in this case, since we are going to change it, it will change the normal flow of the program hihihi
 In 5, I am concatenating the pattern and the address
 In 6, I am sending the data
 and in 7, 8 I am storing the received data in the variable and printing it right after

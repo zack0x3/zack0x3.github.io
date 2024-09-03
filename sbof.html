@@ -65,35 +65,35 @@ pre {
 <p class="topics">3. Important registers, how function call works</p>
 <p class="topics">4. Practice </p>
 <p class="topics">Pre-requisites : Fundamentals of architecture, stack, C, assembly and GDB</p>
-<p class="topics">-------------------------</p>
+<pre class="topics">-------------------------</pre>
 <p class="hi">What is SBOF?</p>
-<p class="text">Hello, today we are going to talk about SBOF. First we need to understand what SBOF is? </p>
-<p class="text">SBOF (Stack Buffer Overflow) is a failure that occurs when we send data that exceeds/overflows the space that was defined for that specific data in the stack / variables with sizes already defined.</p>
-<p class="topics">-------------------------</p>
-<p class="hi">What is a Stack? How does it work?</p>
-<pre>Before we move on, we need to talk about how the stack works, what it is, and about important registers to facilitate our understanding of SBOF
+<pre class="text">Hello, today we are going to talk about SBOF. First we need to understand what SBOF is? </pre>
+<pre class="text">SBOF (Stack Buffer Overflow) is a failure that occurs when we send data that exceeds/overflows the space that was defined for that specific data in the stack / variables with sizes already defined.</pre>
+<pre class="topics">-------------------------</p>
+<p class="hi">What is a Stack? How does it work?</pre>
+<pre class="text">Before we move on, we need to talk about how the stack works, what it is, and about important registers to facilitate our understanding of SBOF
 Stack is a memory area where data, local variables, and function information are stored. 
 Located within it, we have the well-known stack-frame, which is a memory block, and it is in it that the information/data of a given function is stored. 
 Another important point is that the stack is LIFO (Last in, first out), which would be the last to enter, and the first to leave, just like a stack of dishes for us to wash, we stack the dishes and remove them from top to bottom. 
 Another interesting thing is that the stack grows from the highest address to the lowest address, so the highest address is the oldest data in the stack, and the lowest address is the top of the stack (recent). 
 Now I will present a little about the registers.
 </pre>
-<p class="topics">-------------------------</p>
+<pre class="topics">-------------------------</pre>
 <p class="hi">Important Registers, how function call works</p>
-<p class="text">We have 3 important registers that we will need to know in order to better understand how BOF works, they are RBP, RIP and RSP, RBP that points to the base address of the beginning of the stack frame of the current function.
+<pre class="text">We have 3 important registers that we will need to know in order to better understand how BOF works, they are RBP, RIP and RSP, RBP that points to the base address of the beginning of the stack frame of the current function.
 Now, we have RIP that points to the address of the next instruction to be executed, we have RSP that points to the address of the top of the stack, these registers are 64 bits, but we have 32 bits that have the same functions known as EBP, EIP and ESP
 Anyway, after knowing this, I will make one thing clear, when a function is called, the RIP that currently points to the next instruction address after the 'call' instruction is stacked on the stack, but why is it stacked? 
 So that when the 'ret' instruction is called, it knows which address to return to. We have the RBP, which is also stacked, because when the calling function returns, the data in its stack frame is restored, as well as the data that was defined/declared, etc.
-</p>
-<p class="topics">-------------------------</p>
+</pre>
+<pre class="topics">-------------------------</pre>
 <p class="hi">Practice</p>
-<p class="text">Now that we understand how the stack works, we can get an idea of ​​what we can do by exploiting the SBOF. 
+<pre class="text">Now that we understand how the stack works, we can get an idea of ​​what we can do by exploiting the SBOF. 
 We can change data in the stack by overflowing data and change the RIP stacked address and change the program flow.
 Now let's get to work!
-</p>
-<p class="text">Well, here we have a code written in C that uses the gets function, which is a function vulnerable to SBOF.
+</pre>
+<pre class="text">Well, here we have a code written in C that uses the gets function, which is a function vulnerable to SBOF.
  since when we insert data into it, it doesn't even want to know if this data is more than what is defined in the variable, it allows this to happen, not only it, but other functions such as scanf, strcpy, and others that do not ask for any argument to 'limit the size of the characters'</p>
-</p>
+</pre>
 <img src="flag.png"/>
 <pre class="text">We see the code above, where we declare a variable that can hold up to 64 bytes,
 and we use get to get the user input and store it in the variable.

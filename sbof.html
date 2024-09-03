@@ -10,6 +10,9 @@ body {
 	font-size: 10px;
 	color: cyan;
 }
+pre {
+	size: 100px;
+}
 @font-face {
 	font-family: little;
 	src: url("little.otf");
@@ -117,7 +120,7 @@ We will disassemble it and choose an address where we want to add our breakpoint
 So, what's going on here?
 
 Let's start to understand better.
-Starting in the 2nd instruction, I'm pushing the RBP that currently points to the base address of the calling function's stack to retrieve it later, and then in the 3rd instruction, I'm copying the value of RSP to RBP.
+Starting in the 2nd instruction, I'm stacking the RBP that currently points to the base address of the calling function's stack to retrieve it later, and then in the 3rd instruction, I'm copying the value of RSP to RBP.
 Thus creating the stack frame of the current function, that is now the RBP points to the base address of the current function's stack.
 Right after in the 4th instruction, we're subtracting it, knowing that the stack grows from top to bottom, it's allocating space in the stack to be used
 Finally, in the 5th instruction, I am calculating the specific address, this rbp-0x40 is nothing more, nothing less, than the top of the stack and where the data inserted by me was stored.

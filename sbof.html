@@ -70,13 +70,13 @@ pre {
 <p class="text">SBOF (Stack Buffer Overflow) is a failure that occurs when we send data that exceeds/overflows the space that was defined for that specific data in the stack / variables with sizes already defined.</p>
 <p class="topics">-------------------------</p>
 <p class="hi">What is a Stack? How does it work?</p>
-<p class="text">Before we move on, we need to talk about how the stack works, what it is, and about important registers to facilitate our understanding of SBOF
+<pre>Before we move on, we need to talk about how the stack works, what it is, and about important registers to facilitate our understanding of SBOF
 Stack is a memory area where data, local variables, and function information are stored. 
 Located within it, we have the well-known stack-frame, which is a memory block, and it is in it that the information/data of a given function is stored. 
 Another important point is that the stack is LIFO (Last in, first out), which would be the last to enter, and the first to leave, just like a stack of dishes for us to wash, we stack the dishes and remove them from top to bottom. 
 Another interesting thing is that the stack grows from the highest address to the lowest address, so the highest address is the oldest data in the stack, and the lowest address is the top of the stack (recent). 
 Now I will present a little about the registers.
-</p>
+</pre>
 <p class="topics">-------------------------</p>
 <p class="hi">Important Registers, how function call works</p>
 <p class="text">We have 3 important registers that we will need to know in order to better understand how BOF works, they are RBP, RIP and RSP, RBP that points to the base address of the beginning of the stack frame of the current function.
